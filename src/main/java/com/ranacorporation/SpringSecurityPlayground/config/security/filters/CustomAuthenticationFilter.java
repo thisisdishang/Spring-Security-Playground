@@ -24,6 +24,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         1. header: authentication
         2. if the header values matches, then move on the next filter
         */
+        customAuthenticationManager.authenticate();
         filterChain.doFilter(request, response);
     }
 
