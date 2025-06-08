@@ -8,14 +8,31 @@ import java.util.Collection;
 import java.util.List;
 
 public class CustomAuthentication implements Authentication {
+
+    private boolean authenticationFlag;
+    private String header;
+
+    public CustomAuthentication(boolean authenticationFlag, String header) {
+        this.authenticationFlag = authenticationFlag;
+        this.header = header;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
     @Override
     public boolean isAuthenticated() {
-        return false;
+        return authenticationFlag;
     }
 
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-
+        this.authenticationFlag = isAuthenticated;
     }
 
     @Override

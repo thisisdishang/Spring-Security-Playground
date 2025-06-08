@@ -1,6 +1,7 @@
 package com.ranacorporation.SpringSecurityPlayground.config.security.filters;
 
 import com.ranacorporation.SpringSecurityPlayground.config.security.manager.CustomAuthenticationManager;
+import com.ranacorporation.SpringSecurityPlayground.config.security.model.CustomAuthentication;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -24,7 +25,9 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         1. header: authentication
         2. if the header values matches, then move on the next filter
         */
-        customAuthenticationManager.authenticate();
+        String authenticationValue = request.getHeader("x-authentication");
+        CustomAuthentication customAuthentication = new CustomAuthentication(false, authenticationValue);
+        customAuthenticationManager.authenticate(customAuthentication);
         filterChain.doFilter(request, response);
     }
 
