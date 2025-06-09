@@ -27,8 +27,10 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         */
         String authenticationValue = request.getHeader("x-authentication");
         CustomAuthentication customAuthentication = new CustomAuthentication(false, authenticationValue);
-        customAuthenticationManager.authenticate(customAuthentication);
-        filterChain.doFilter(request, response);
+        CustomAuthentication result = (CustomAuthentication) customAuthenticationManager.authenticate(customAuthentication);
+        if (result.isAuthenticated()) {
+            filterChain.doFilter(request, response);
+        }
     }
 
 //    filter call: forward, include
