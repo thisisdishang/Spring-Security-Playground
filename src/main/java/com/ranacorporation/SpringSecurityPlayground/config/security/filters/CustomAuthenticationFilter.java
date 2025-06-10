@@ -5,6 +5,7 @@ import com.ranacorporation.SpringSecurityPlayground.config.security.model.Custom
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -29,6 +30,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         CustomAuthentication customAuthentication = new CustomAuthentication(false, authenticationValue);
         CustomAuthentication result = (CustomAuthentication) customAuthenticationManager.authenticate(customAuthentication);
         if (result.isAuthenticated()) {
+            SecurityContextHolder.getContext().setAuthentication(result);
             filterChain.doFilter(request, response);
         }
     }
