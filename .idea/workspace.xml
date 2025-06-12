@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d46f66e-aa60-408b-a807-97fd8ff87338" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/SpringSecurityPlaygroundApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/config/security/filters/CustomAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/config/security/manager/CustomAuthenticationManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/config/security/model/CustomAuthentication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/config/security/providers/CustomAuthenticationProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/controller/AppController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/model/SecurityUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/repository/LoginRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ranacorporation/SpringSecurityPlayground/service/LoginDetailsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/ranacorporation/SpringSecurityPlayground/SpringSecurityPlaygroundApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="2d46f66e-aa60-408b-a807-97fd8ff87338" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +55,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/disha/IdeaProjects/SpringSecurityPlayground/Authentication"
+    "last_opened_file_path": "C:/Users/disha/IdeaProjects/SpringSecurityPlayground/Authorize"
   }
 }]]></component>
   <component name="RunManager">
