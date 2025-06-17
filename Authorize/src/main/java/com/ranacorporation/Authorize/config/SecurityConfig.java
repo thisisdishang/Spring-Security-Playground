@@ -49,13 +49,17 @@ public class SecurityConfig {
 
     401: Authentication Failure => Unauthorized
     403: Authorization Fail / Access Rights => Forbidden
+
+    Request (no auth) => authorization filter (permit all) => response
+    Request (basic auth) => authentication => authorization => permit all => response
+    Request (invalid basic auth) => authentication => invalid
     */
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(customizer -> customizer.anyRequest().hasAuthority("READ"))
+                .authorizeHttpRequests(customizer -> customizer.anyRequest().permitAll())
                 .build();
     }
 }
