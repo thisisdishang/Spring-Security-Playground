@@ -20,8 +20,8 @@ public class SecurityConfig {
         UserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
         // create two user
-        UserDetails firstUser = User.builder().username("jarvis").password("gameison").authorities("READ").build();
-        UserDetails secondUser = User.builder().username("lucifer").password("gameison").authorities("WRITE").build();
+        UserDetails firstUser = User.builder().username("jarvis").password("gameison").roles("MANAGER").build();
+        UserDetails secondUser = User.builder().username("lucifer").password("gameison").roles("CEO").build();
 
         userDetailsManager.createUser(firstUser);
         userDetailsManager.createUser(secondUser);
@@ -53,13 +53,17 @@ public class SecurityConfig {
     Request (no auth) => authorization filter (permit all) => response
     Request (basic auth) => authentication => authorization => permit all => response
     Request (invalid basic auth) => authentication => invalid
+
+    GrantedAuthority: role and authority
+    role: ROLE_MANAGER
+    authority: READ
     */
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(customizer -> customizer.anyRequest().permitAll())
+                .authorizeHttpRequests(customizer -> customizer.anyRequest().hasAuthority("ROLE_MANAGER"))
                 .build();
     }
 }
