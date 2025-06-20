@@ -20,8 +20,8 @@ public class SecurityConfig {
         UserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
         // create two user
-        UserDetails firstUser = User.builder().username("jarvis").password("gameison").roles("MANAGER").build();
-        UserDetails secondUser = User.builder().username("lucifer").password("gameison").roles("CEO").build();
+        UserDetails firstUser = User.builder().username("jarvis").password("gameison").authorities("READ").build();
+        UserDetails secondUser = User.builder().username("lucifer").password("gameison").authorities("WRITE").build();
 
         userDetailsManager.createUser(firstUser);
         userDetailsManager.createUser(secondUser);
@@ -63,7 +63,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(customizer -> customizer.anyRequest().hasAuthority("ROLE_MANAGER"))
+                .authorizeHttpRequests(customizer -> customizer
+                        .requestMatchers("/public/**")
+                        .permitAll()
+                        .requestMatchers("/admin/**")
+                        .hasAuthority("READ")
+                        .anyRequest()
+                        .authenticated())
                 .build();
     }
 }
