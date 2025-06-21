@@ -2,6 +2,7 @@ package com.ranacorporation.Authorize.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -64,12 +65,10 @@ public class SecurityConfig {
         return httpSecurity
                 .httpBasic(Customizer.withDefaults())
                 .authorizeHttpRequests(customizer -> customizer
-                        .requestMatchers("/public/**")
-                        .permitAll()
-                        .requestMatchers("/admin/**")
-                        .hasAuthority("READ")
-                        .anyRequest()
-                        .authenticated())
+                        .requestMatchers("/public/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority("READ")
+                        .requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority("WRITE")
+                        .anyRequest().authenticated())
                 .build();
     }
 }
