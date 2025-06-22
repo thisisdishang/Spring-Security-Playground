@@ -69,6 +69,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority("READ")
                         .requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority("WRITE")
                         .anyRequest().authenticated())
+                .csrf(customizer -> customizer.disable()) // do not do this in production
                 .build();
     }
 }
