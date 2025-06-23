@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,6 +16,13 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+// @EnableGlobalMethodSecurity(prePostEnabled = true)
+// AspectJ
+@EnableMethodSecurity
+// Spring Aspects
+/*
+    PreAuthorize, PostAuthorize, PreFilter, PostFilter
+*/
 public class SecurityConfig {
 
     @Bean
@@ -64,12 +73,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests(customizer -> customizer
-                        .requestMatchers("/public/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority("READ")
-                        .requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority("WRITE")
-                        .anyRequest().authenticated())
-                .csrf(customizer -> customizer.disable()) // do not do this in production
+//                .authorizeHttpRequests(customizer -> customizer
+//                        .requestMatchers("/public/**").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/admin/**").hasAuthority("READ")
+//                        .requestMatchers(HttpMethod.POST, "/admin/**").hasAuthority("WRITE")
+//                        .anyRequest().authenticated())
+//                .csrf(customizer -> customizer.disable()) // do not do this in production
                 .build();
     }
 }
