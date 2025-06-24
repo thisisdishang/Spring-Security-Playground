@@ -25,6 +25,8 @@ import org.springframework.security.web.SecurityFilterChain;
 */
 public class SecurityConfig {
 
+    private UserDetails secondUser;
+
     @Bean
     public UserDetailsManager userDetailsManager() {
         UserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
@@ -32,9 +34,11 @@ public class SecurityConfig {
         // create two user
         UserDetails firstUser = User.builder().username("jarvis").password("gameison").authorities("READ").build();
         UserDetails secondUser = User.builder().username("lucifer").password("gameison").authorities("WRITE").build();
+        UserDetails thirdUser = User.builder().username("peaky").password("gameison").build();
 
         userDetailsManager.createUser(firstUser);
         userDetailsManager.createUser(secondUser);
+        userDetailsManager.createUser(thirdUser);
 
         return userDetailsManager;
     }

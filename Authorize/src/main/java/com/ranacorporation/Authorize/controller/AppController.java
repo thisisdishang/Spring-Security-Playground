@@ -19,4 +19,16 @@ public class AppController {
     public String getUsers(){
         return "I am a user endpoint";
     }
+
+    @GetMapping("/users2")
+    @PreAuthorize("hasAnyAuthority('READ','WRITE')")
+    public String getUsers2(){
+        return "I am a user 2 endpoint";
+    }
+
+    @GetMapping("/users3")
+    @PreAuthorize("authentication != null")
+    public String getUsers3(){
+        return "I am a user 3 endpoint";
+    }
 }
