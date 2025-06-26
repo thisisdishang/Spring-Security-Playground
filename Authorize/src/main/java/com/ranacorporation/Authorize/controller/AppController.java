@@ -31,4 +31,10 @@ public class AppController {
     public String getUsers3(){
         return "I am a user 3 endpoint";
     }
+
+    @GetMapping("/users4")
+    @PreAuthorize("@authorizationApply.validation()")
+    public String getUsers4(){
+        return "I am a user 4 endpoint";
+    }
 }
