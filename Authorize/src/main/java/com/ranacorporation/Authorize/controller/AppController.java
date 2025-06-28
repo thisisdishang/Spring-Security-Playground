@@ -1,5 +1,6 @@
 package com.ranacorporation.Authorize.controller;
 
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,4 +38,7 @@ public class AppController {
     public String getUsers4(){
         return "I am a user 4 endpoint";
     }
+
+    @GetMapping
+    @PostAuthorize()
 }
