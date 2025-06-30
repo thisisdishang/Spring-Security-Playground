@@ -1,8 +1,10 @@
 package com.ranacorporation.Authorize.controller;
 
+import com.ranacorporation.Authorize.model.User;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,28 +19,30 @@ public class AppController {
 
     @GetMapping("/users")
     @PreAuthorize("hasAuthority('READ')")
-    public String getUsers(){
+    public String getUsers() {
         return "I am a user endpoint";
     }
 
     @GetMapping("/users2")
     @PreAuthorize("hasAnyAuthority('READ','WRITE')")
-    public String getUsers2(){
+    public String getUsers2() {
         return "I am a user 2 endpoint";
     }
 
     @GetMapping("/users3")
     @PreAuthorize("authentication != null")
-    public String getUsers3(){
+    public String getUsers3() {
         return "I am a user 3 endpoint";
     }
 
     @GetMapping("/users4")
     @PreAuthorize("@authorizationApply.validation()")
-    public String getUsers4(){
+    public String getUsers4() {
         return "I am a user 4 endpoint";
     }
 
-    @GetMapping
-    @PostAuthorize()
+    @GetMapping("/users/{id}")
+    public User getUserById(@PathVariable("id") String id) {
+
+    }
 }
