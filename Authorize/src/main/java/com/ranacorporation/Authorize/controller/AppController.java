@@ -1,6 +1,7 @@
 package com.ranacorporation.Authorize.controller;
 
 import com.ranacorporation.Authorize.model.User;
+import com.ranacorporation.Authorize.service.UserService;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/app")
 // authenticated resource
 public class AppController {
+
+    private UserService userService;
+
+    public AppController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/test")
     public String test() {
         return "Hello from app";
@@ -42,7 +50,9 @@ public class AppController {
     }
 
     @GetMapping("/users/{id}")
+    @PostAuthorize("returnObject.username == authentication.name")
     public User getUserById(@PathVariable("id") String id) {
-
+        userService.init();
+        return userService.getUser(id);
     }
 }
