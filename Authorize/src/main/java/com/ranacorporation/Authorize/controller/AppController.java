@@ -50,7 +50,7 @@ public class AppController {
     }
 
     @GetMapping("/users/{id}")
-    @PostAuthorize("returnObject.username == authentication.name")
+    @PostAuthorize("returnObject.username == authentication.name or hasAuthority('WRITE')")
     public User getUserById(@PathVariable("id") String id) {
         userService.init();
         return userService.getUser(id);
